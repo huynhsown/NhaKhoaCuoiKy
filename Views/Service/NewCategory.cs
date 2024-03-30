@@ -65,13 +65,14 @@ namespace NhaKhoaCuoiKy.Views.Service
                 p = ServiceHelper.addNewCategory(tb_category.Text.Trim());
                 MessageBox.Show("Thêm thành công", "Dich vụ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 int id = p.Get<int>("@MaLoaiDichVu");
-                string txt = p.Get<string>("@LoaiDichVu");
+                string txt = p.Get<string>("@TenLoaiDichVu");
                 serviceForm.data_loaiDichvu.Rows.Add(id,txt);
                 Close();
             }
             catch(Exception ex)
             {
                 MessageBox.Show("Lôi", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
             }
         }
     }

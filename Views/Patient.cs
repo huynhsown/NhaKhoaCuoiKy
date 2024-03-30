@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using NhaKhoaCuoiKy.Helpers;
 using NhaKhoaCuoiKy.Models;
+using NhaKhoaCuoiKy.Views.Service;
 using System.Data;
 
 namespace NhaKhoaCuoiKy.Views
@@ -16,7 +17,14 @@ namespace NhaKhoaCuoiKy.Views
         public EventHandler addNewRecord;
         private NewPatient newPatient;
         private Validate validate = new Validate();
+        private MainForm mainForm;
         PatientModel pm;
+
+        public Patient(MainForm mainForm)
+        {
+            InitializeComponent();
+            this.mainForm = mainForm;
+        }
         private void guna2Button2_Click(object sender, EventArgs e)
         {
             newPatient?.Close();
@@ -38,6 +46,24 @@ namespace NhaKhoaCuoiKy.Views
                 string diaChi = soNha.ToString() + " " + duong + " " + phuong + " " + thanhPho;
                 data_benhNhan.Rows.Add(maBN, hoTen, soDienThoai, ngaySinh, gioiTinh, diaChi);
             };
+
+/*            FormBackGround formBackGround = new FormBackGround(mainForm);
+            try
+            {
+                using (NewPatient newCategory = new NewPatient(this))
+                {
+                    formBackGround.Owner = mainForm;
+                    formBackGround.Show();
+                    newCategory.Owner = formBackGround;
+                    newCategory.ShowDialog();
+                    formBackGround.Dispose();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Đã xảy ra lỗi! Vui lòng thử lại.", "Thông báo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }*/
         }
 
         private void Patient_Load(object sender, EventArgs e)

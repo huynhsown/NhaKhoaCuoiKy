@@ -3,6 +3,8 @@ using Guna.UI2.WinForms;
 using NhaKhoaCuoiKy.dbs;
 using NhaKhoaCuoiKy.Helpers;
 using NhaKhoaCuoiKy.Models;
+using NhaKhoaCuoiKy.Views.Service;
+using System.Runtime.InteropServices;
 
 namespace NhaKhoaCuoiKy.Views
 {
@@ -11,9 +13,30 @@ namespace NhaKhoaCuoiKy.Views
         public DynamicParameters p { get; set; }
         public EventHandler eventAddPatient;
         private Validate validate = new Validate();
+        private Patient patient;
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // width of ellipse
+            int nHeightEllipse // height of ellipse
+        );
+
         public NewPatient()
         {
             InitializeComponent();
+        }
+
+        public NewPatient(Patient patient)
+        {
+            InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.patient = patient;
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
 
         protected override void OnPaint(PaintEventArgs e)

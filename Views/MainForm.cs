@@ -98,7 +98,7 @@ namespace NhaKhoaCuoiKy.Views
         {
             closeAllPanel();
             patient?.Close();
-            openChildForm(patient = new Patient());
+            openChildForm(patient = new Patient(this));
         }
 
         private void btn_exit_MouseEnter(object sender, EventArgs e)

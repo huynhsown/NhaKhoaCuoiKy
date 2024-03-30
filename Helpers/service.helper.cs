@@ -47,7 +47,7 @@ namespace NhaKhoaCuoiKy.Helpers
             {
                 var p = new DynamicParameters();
                 p.Add("@MaLoaiDichVu", 0, DbType.Int32, direction: ParameterDirection.Output);
-                p.Add("@LoaiDichVu", category);
+                p.Add("@TenLoaiDichVu", category);
 
                 using (IDbConnection connection = db.getConnection)
                 {
@@ -63,6 +63,62 @@ namespace NhaKhoaCuoiKy.Helpers
             {
 
             }
+        }
+
+        public static int countCategoryItems(int id)
+        {
+            Database db = new Database();
+            int count = 0;
+            try
+            {
+                db.openConnection();
+                using(SqlCommand cmd = new SqlCommand("countCategoryItems", db.getConnection))
+                {
+                    cmd.Parameters.AddWithValue("@MaLoaiDichVu", id);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    count = (int)cmd.ExecuteScalar();
+                }
+                db.closeConnection();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                db.closeConnection();
+            }
+            return count;
+        }
+
+        public static bool removeCategory(int id)
+        {
+            Database db = new Database();
+            bool check = false;
+            try
+            {
+                db.openConnection();
+                using (SqlCommand cmd = new SqlCommand("removeCategory", db.getConnection))
+                {
+                    cmd.Parameters.AddWithValue("@MaLoaiDichVu", id);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    if(cmd.ExecuteNonQuery() >= 1)
+                    {
+                        check = true;
+                    }
+                }
+                db.closeConnection();
+                return check;
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                db.closeConnection();
+            }
+            return check;
         }
     }
 }

@@ -26,11 +26,20 @@ namespace NhaKhoaCuoiKy.Views.Service
             int nHeightEllipse // height of ellipse
         );
 
+        private Servicee service;
         public NewService()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+        }
+
+        public NewService(Servicee service)
+        {
+            InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            this.service = service;
         }
         private void btn_cancel_Click(object sender, EventArgs e)
         {
@@ -39,11 +48,13 @@ namespace NhaKhoaCuoiKy.Views.Service
 
         private void NewService_Load(object sender, EventArgs e)
         {
-/*            Dictionary<int, string> lsCategory = ServiceHelper.getAllServiceCategory();
-            foreach (KeyValuePair<int, string> kvp in lsCategory)
+            DataTable lsCategory = ServiceHelper.getAllServiceCategory();
+            foreach (DataRow dr in lsCategory.Rows)
             {
-                cb_category.Items.Add(new ComboBoxItem(kvp.Key, kvp.Value));
-            }*/
+                int id = Convert.ToInt32(dr[0]);
+                string title = dr[1].ToString();
+                cb_category.Items.Add(new ComboBoxItem(id, title));
+            }
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)

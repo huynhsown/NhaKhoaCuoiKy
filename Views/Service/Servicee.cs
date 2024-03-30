@@ -59,6 +59,7 @@ namespace NhaKhoaCuoiKy.Views.Service
         {
             try
             {
+                data_loaiDichvu.Rows.Clear();
                 DataTable dt = ServiceHelper.getAllServiceCategory();
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -89,6 +90,67 @@ namespace NhaKhoaCuoiKy.Views.Service
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void data_loaiDichvu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (data_loaiDichvu.Columns[e.ColumnIndex].Name == "col_active")
+                {
+                    int index = e.RowIndex;
+                    int categoryID = Convert.ToInt32(data_loaiDichvu.Rows[index].Cells[0].Value);
+                    int count = ServiceHelper.countCategoryItems(categoryID);
+                    DialogResult dr;
+                    if (count > 0)
+                    {
+                        dr = MessageBox.Show($"Danh sách đang chứa {count} dịch vụ. Bạn chắc chắn xóa?", "Xóa", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    }
+                    else
+                    {
+                        dr = MessageBox.Show("Bạn chắc chắn xóa?", "Xóa", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    }
+
+                    if (dr == DialogResult.Yes)
+                    {
+                        if (ServiceHelper.removeCategory(categoryID))
+                        {
+                            MessageBox.Show("Xóa thành công", "Xóa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            loadAllCategory();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Xóa thất bại", "Xóa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR");
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_add_category_item_Click(object sender, EventArgs e)
+        {
+            FormBackGround formBackGround = new FormBackGround(mainForm);
+            try
+            {
+                using (NewService newService = new NewService(this))
+                {
+                    formBackGround.Owner = mainForm;
+                    formBackGround.Show();
+                    newService.Owner = formBackGround;
+                    newService.ShowDialog();
+                    formBackGround.Dispose();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Đã xảy ra lỗi! Vui lòng thử lại.", "Thông báo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
