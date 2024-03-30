@@ -1,0 +1,9 @@
+CREATE PROCEDURE [dbo].[addCategory]
+	@MaLoaiDichVu INT OUTPUT,
+	@TenLoaiDichVu NVARCHAR(MAX)
+AS
+BEGIN
+	INSERT INTO LOAIDICHVU VALUES(@TenLoaiDichVu);
+	SET @MaLoaiDichVu = SCOPE_IDENTITY();
+	RETURN 1;
+END

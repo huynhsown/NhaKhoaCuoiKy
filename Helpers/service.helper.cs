@@ -118,7 +118,25 @@ namespace NhaKhoaCuoiKy.Helpers
             {
                 db.closeConnection();
             }
-            return check;
+        }
+
+        public static bool addNewService(string title, int price, int discount , int warranty, int unit, int time, string detail)
+        {
+            Database db = new Database();
+            bool check = false;
+            try
+            {
+                db.openConnection();
+                
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                db.closeConnection();
+            }
         }
     }
 }
