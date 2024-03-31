@@ -125,7 +125,7 @@ namespace NhaKhoaCuoiKy.Views
 
         private void tb_phone_TextChanged(object sender, EventArgs e)
         {
-            warningValidate(pb_phone, tb_phone, validate.validatePhone(tb_phone.Text));
+            warningValidate(pb_phone, tb_phone, validate.validateNumber(tb_phone.Text));
         }
     }
 }

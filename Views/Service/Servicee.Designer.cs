@@ -61,10 +61,6 @@
             btn_category_refresh = new Guna.UI2.WinForms.Guna2Button();
             btn_add = new Guna.UI2.WinForms.Guna2Button();
             data_loaiDichvu = new Guna.UI2.WinForms.Guna2DataGridView();
-            MaBenhNhan = new DataGridViewTextBoxColumn();
-            HoTen = new DataGridViewTextBoxColumn();
-            col_btn_Info = new DataGridViewButtonColumn();
-            col_active = new DataGridViewButtonColumn();
             panelCategory = new Guna.UI2.WinForms.Guna2ShadowPanel();
             guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             tb_category_search = new Guna.UI2.WinForms.Guna2TextBox();
@@ -72,13 +68,17 @@
             guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             data_category_items = new Guna.UI2.WinForms.Guna2DataGridView();
-            guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
-            btn_add_category_item = new Guna.UI2.WinForms.Guna2Button();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewButtonColumn1 = new DataGridViewButtonColumn();
             col_active_item = new DataGridViewButtonColumn();
+            guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
+            btn_refesh_service = new Guna.UI2.WinForms.Guna2Button();
+            btn_add_category_item = new Guna.UI2.WinForms.Guna2Button();
+            MaBenhNhan = new DataGridViewTextBoxColumn();
+            HoTen = new DataGridViewTextBoxColumn();
+            col_category_Info = new DataGridViewButtonColumn();
+            col_active = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)data_loaiDichvu).BeginInit();
             panelCategory.SuspendLayout();
             guna2ShadowPanel1.SuspendLayout();
@@ -169,7 +169,7 @@
             data_loaiDichvu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             data_loaiDichvu.ColumnHeadersHeight = 46;
             data_loaiDichvu.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            data_loaiDichvu.Columns.AddRange(new DataGridViewColumn[] { MaBenhNhan, HoTen, col_btn_Info, col_active });
+            data_loaiDichvu.Columns.AddRange(new DataGridViewColumn[] { MaBenhNhan, HoTen, col_category_Info, col_active });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -219,42 +219,7 @@
             data_loaiDichvu.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             data_loaiDichvu.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             data_loaiDichvu.CellContentClick += data_loaiDichvu_CellContentClick;
-            // 
-            // MaBenhNhan
-            // 
-            MaBenhNhan.FillWeight = 30F;
-            MaBenhNhan.HeaderText = "Mã ";
-            MaBenhNhan.MinimumWidth = 6;
-            MaBenhNhan.Name = "MaBenhNhan";
-            MaBenhNhan.ReadOnly = true;
-            // 
-            // HoTen
-            // 
-            HoTen.FillWeight = 110.4278F;
-            HoTen.HeaderText = "Loại Dịch Vụ";
-            HoTen.MinimumWidth = 6;
-            HoTen.Name = "HoTen";
-            HoTen.ReadOnly = true;
-            // 
-            // col_btn_Info
-            // 
-            col_btn_Info.FillWeight = 40F;
-            col_btn_Info.HeaderText = "Thông tin";
-            col_btn_Info.MinimumWidth = 6;
-            col_btn_Info.Name = "col_btn_Info";
-            col_btn_Info.ReadOnly = true;
-            col_btn_Info.Text = "Xem";
-            col_btn_Info.UseColumnTextForButtonValue = true;
-            // 
-            // col_active
-            // 
-            col_active.FillWeight = 40F;
-            col_active.HeaderText = "Hành động";
-            col_active.MinimumWidth = 6;
-            col_active.Name = "col_active";
-            col_active.ReadOnly = true;
-            col_active.Text = "Xóa";
-            col_active.UseColumnTextForButtonValue = true;
+            data_loaiDichvu.CellDoubleClick += data_loaiDichvu_CellDoubleClick;
             // 
             // panelCategory
             // 
@@ -320,7 +285,7 @@
             guna2ShadowPanel1.Controls.Add(guna2TextBox1);
             guna2ShadowPanel1.Controls.Add(data_category_items);
             guna2ShadowPanel1.Controls.Add(guna2Button4);
-            guna2ShadowPanel1.Controls.Add(guna2Button5);
+            guna2ShadowPanel1.Controls.Add(btn_refesh_service);
             guna2ShadowPanel1.Controls.Add(btn_add_category_item);
             guna2ShadowPanel1.FillColor = Color.White;
             guna2ShadowPanel1.Location = new Point(614, 48);
@@ -441,67 +406,7 @@
             data_category_items.ThemeStyle.RowsStyle.Height = 29;
             data_category_items.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             data_category_items.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            // 
-            // guna2Button4
-            // 
-            guna2Button4.BorderRadius = 15;
-            guna2Button4.CustomizableEdges = customizableEdges15;
-            guna2Button4.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button4.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button4.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button4.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button4.FillColor = Color.FromArgb(17, 34, 71);
-            guna2Button4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2Button4.ForeColor = Color.White;
-            guna2Button4.Image = (Image)resources.GetObject("guna2Button4.Image");
-            guna2Button4.ImageAlign = HorizontalAlignment.Left;
-            guna2Button4.Location = new Point(401, 37);
-            guna2Button4.Name = "guna2Button4";
-            guna2Button4.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            guna2Button4.Size = new Size(130, 36);
-            guna2Button4.TabIndex = 2;
-            guna2Button4.Text = "In";
-            // 
-            // guna2Button5
-            // 
-            guna2Button5.BorderRadius = 15;
-            guna2Button5.CustomizableEdges = customizableEdges17;
-            guna2Button5.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button5.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button5.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button5.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button5.FillColor = Color.FromArgb(17, 34, 71);
-            guna2Button5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2Button5.ForeColor = Color.White;
-            guna2Button5.Image = (Image)resources.GetObject("guna2Button5.Image");
-            guna2Button5.ImageAlign = HorizontalAlignment.Left;
-            guna2Button5.Location = new Point(226, 37);
-            guna2Button5.Name = "guna2Button5";
-            guna2Button5.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            guna2Button5.Size = new Size(130, 36);
-            guna2Button5.TabIndex = 1;
-            guna2Button5.Text = "Làm mới";
-            // 
-            // btn_add_category_item
-            // 
-            btn_add_category_item.BorderRadius = 15;
-            btn_add_category_item.CustomizableEdges = customizableEdges19;
-            btn_add_category_item.DisabledState.BorderColor = Color.DarkGray;
-            btn_add_category_item.DisabledState.CustomBorderColor = Color.DarkGray;
-            btn_add_category_item.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btn_add_category_item.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btn_add_category_item.FillColor = Color.FromArgb(17, 34, 71);
-            btn_add_category_item.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_add_category_item.ForeColor = Color.White;
-            btn_add_category_item.Image = Properties.Resources.icons8_add_new_64;
-            btn_add_category_item.ImageAlign = HorizontalAlignment.Left;
-            btn_add_category_item.Location = new Point(40, 37);
-            btn_add_category_item.Name = "btn_add_category_item";
-            btn_add_category_item.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            btn_add_category_item.Size = new Size(130, 36);
-            btn_add_category_item.TabIndex = 0;
-            btn_add_category_item.Text = "Thêm";
-            btn_add_category_item.Click += btn_add_category_item_Click;
+            data_category_items.CellContentClick += data_category_items_CellContentClick;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -514,7 +419,7 @@
             // dataGridViewTextBoxColumn2
             // 
             dataGridViewTextBoxColumn2.FillWeight = 110.4278F;
-            dataGridViewTextBoxColumn2.HeaderText = "Loại Dịch Vụ";
+            dataGridViewTextBoxColumn2.HeaderText = "Dịch Vụ";
             dataGridViewTextBoxColumn2.MinimumWidth = 6;
             dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             dataGridViewTextBoxColumn2.ReadOnly = true;
@@ -538,6 +443,104 @@
             col_active_item.ReadOnly = true;
             col_active_item.Text = "Xóa";
             col_active_item.UseColumnTextForButtonValue = true;
+            // 
+            // guna2Button4
+            // 
+            guna2Button4.BorderRadius = 15;
+            guna2Button4.CustomizableEdges = customizableEdges15;
+            guna2Button4.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button4.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button4.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2Button4.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button4.FillColor = Color.FromArgb(17, 34, 71);
+            guna2Button4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            guna2Button4.ForeColor = Color.White;
+            guna2Button4.Image = (Image)resources.GetObject("guna2Button4.Image");
+            guna2Button4.ImageAlign = HorizontalAlignment.Left;
+            guna2Button4.Location = new Point(401, 37);
+            guna2Button4.Name = "guna2Button4";
+            guna2Button4.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            guna2Button4.Size = new Size(130, 36);
+            guna2Button4.TabIndex = 2;
+            guna2Button4.Text = "In";
+            // 
+            // btn_refesh_service
+            // 
+            btn_refesh_service.BorderRadius = 15;
+            btn_refesh_service.CustomizableEdges = customizableEdges17;
+            btn_refesh_service.DisabledState.BorderColor = Color.DarkGray;
+            btn_refesh_service.DisabledState.CustomBorderColor = Color.DarkGray;
+            btn_refesh_service.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btn_refesh_service.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btn_refesh_service.FillColor = Color.FromArgb(17, 34, 71);
+            btn_refesh_service.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_refesh_service.ForeColor = Color.White;
+            btn_refesh_service.Image = (Image)resources.GetObject("btn_refesh_service.Image");
+            btn_refesh_service.ImageAlign = HorizontalAlignment.Left;
+            btn_refesh_service.Location = new Point(226, 37);
+            btn_refesh_service.Name = "btn_refesh_service";
+            btn_refesh_service.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            btn_refesh_service.Size = new Size(130, 36);
+            btn_refesh_service.TabIndex = 1;
+            btn_refesh_service.Text = "Làm mới";
+            btn_refesh_service.Click += btn_refesh_service_Click;
+            // 
+            // btn_add_category_item
+            // 
+            btn_add_category_item.BorderRadius = 15;
+            btn_add_category_item.CustomizableEdges = customizableEdges19;
+            btn_add_category_item.DisabledState.BorderColor = Color.DarkGray;
+            btn_add_category_item.DisabledState.CustomBorderColor = Color.DarkGray;
+            btn_add_category_item.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btn_add_category_item.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btn_add_category_item.FillColor = Color.FromArgb(17, 34, 71);
+            btn_add_category_item.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_add_category_item.ForeColor = Color.White;
+            btn_add_category_item.Image = Properties.Resources.icons8_add_new_64;
+            btn_add_category_item.ImageAlign = HorizontalAlignment.Left;
+            btn_add_category_item.Location = new Point(40, 37);
+            btn_add_category_item.Name = "btn_add_category_item";
+            btn_add_category_item.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            btn_add_category_item.Size = new Size(130, 36);
+            btn_add_category_item.TabIndex = 0;
+            btn_add_category_item.Text = "Thêm";
+            btn_add_category_item.Click += btn_add_category_item_Click;
+            // 
+            // MaBenhNhan
+            // 
+            MaBenhNhan.FillWeight = 30F;
+            MaBenhNhan.HeaderText = "Mã ";
+            MaBenhNhan.MinimumWidth = 6;
+            MaBenhNhan.Name = "MaBenhNhan";
+            MaBenhNhan.ReadOnly = true;
+            // 
+            // HoTen
+            // 
+            HoTen.FillWeight = 110.4278F;
+            HoTen.HeaderText = "Loại Dịch Vụ";
+            HoTen.MinimumWidth = 6;
+            HoTen.Name = "HoTen";
+            HoTen.ReadOnly = true;
+            // 
+            // col_category_Info
+            // 
+            col_category_Info.FillWeight = 40F;
+            col_category_Info.HeaderText = "Thông tin";
+            col_category_Info.MinimumWidth = 6;
+            col_category_Info.Name = "col_category_Info";
+            col_category_Info.ReadOnly = true;
+            col_category_Info.Text = "Xem";
+            col_category_Info.UseColumnTextForButtonValue = true;
+            // 
+            // col_active
+            // 
+            col_active.FillWeight = 40F;
+            col_active.HeaderText = "Hành động";
+            col_active.MinimumWidth = 6;
+            col_active.Name = "col_active";
+            col_active.ReadOnly = true;
+            col_active.Text = "Xóa";
+            col_active.UseColumnTextForButtonValue = true;
             // 
             // Servicee
             // 
@@ -570,15 +573,15 @@
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
         public Guna.UI2.WinForms.Guna2DataGridView data_category_items;
         private Guna.UI2.WinForms.Guna2Button guna2Button4;
-        private Guna.UI2.WinForms.Guna2Button guna2Button5;
+        private Guna.UI2.WinForms.Guna2Button btn_refesh_service;
         private Guna.UI2.WinForms.Guna2Button btn_add_category_item;
-        private DataGridViewTextBoxColumn MaBenhNhan;
-        private DataGridViewTextBoxColumn HoTen;
-        private DataGridViewButtonColumn col_btn_Info;
-        private DataGridViewButtonColumn col_active;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewButtonColumn dataGridViewButtonColumn1;
         private DataGridViewButtonColumn col_active_item;
+        private DataGridViewTextBoxColumn MaBenhNhan;
+        private DataGridViewTextBoxColumn HoTen;
+        private DataGridViewButtonColumn col_category_Info;
+        private DataGridViewButtonColumn col_active;
     }
 }

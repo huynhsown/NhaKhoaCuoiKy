@@ -28,6 +28,7 @@ namespace NhaKhoaCuoiKy.Views.Service
 
         public DynamicParameters p;
         private Servicee serviceForm;
+        private int categoryID;
         public NewCategory()
         {
             InitializeComponent();
@@ -41,6 +42,20 @@ namespace NhaKhoaCuoiKy.Views.Service
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             this.serviceForm = serviceForm;
+        }
+
+        public NewCategory(Servicee serviceForm, int categoryID)
+        {
+            InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            this.serviceForm = serviceForm;
+            this.categoryID = categoryID;
+            btn_edit.Location = new Point(289, 125);
+            btn_edit.Visible = true;
+            btn_edit.Enabled = true;
+            btn_add.Visible = false;
+            btn_add.Enabled = false;
         }
 
         private void NewCategory_Load(object sender, EventArgs e)
@@ -66,13 +81,22 @@ namespace NhaKhoaCuoiKy.Views.Service
                 MessageBox.Show("Thêm thành công", "Dich vụ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 int id = p.Get<int>("@MaLoaiDichVu");
                 string txt = p.Get<string>("@TenLoaiDichVu");
-                serviceForm.data_loaiDichvu.Rows.Add(id,txt);
+                serviceForm.data_loaiDichvu.Rows.Add(id, txt);
                 Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Lôi", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_edit_Click(object sender, EventArgs e)
+        {
+            if(tb_category.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Vui lòng nhập loại dịch vụ!", "Loại dịch vụ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
         }
     }

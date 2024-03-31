@@ -138,7 +138,7 @@ namespace NhaKhoaCuoiKy.Views
         {
             try
             {
-                if (!validate.validatePhone(tb_filter_search.Text.Trim()))
+                if (!validate.validateNumber(tb_filter_search.Text.Trim()))
                 {
                     MessageBox.Show("Ma benh nhan khong hop le (Chua ky tu dac biet hoac chu cai)", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -168,7 +168,7 @@ namespace NhaKhoaCuoiKy.Views
         {
             try
             {
-                if (!validate.validatePhone(tb_filter_search.Text.Trim()))
+                if (!validate.validateNumber(tb_filter_search.Text.Trim()))
                 {
                     MessageBox.Show("So dien thoai khong hop le (Chua ky tu dac biet hoac chu cai)", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;

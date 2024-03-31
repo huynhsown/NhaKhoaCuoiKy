@@ -1,0 +1,7 @@
+CREATE PROCEDURE [dbo].[getServiceByID]
+	@MaDichVu INT
+AS
+BEGIN
+	SELECT * FROM DICHVU WHERE MaDichVu = @MaDichVu;
+	RETURN 1;
+END

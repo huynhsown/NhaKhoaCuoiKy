@@ -14,7 +14,7 @@ namespace NhaKhoaCuoiKy.Helpers
             return Regex.IsMatch(name, "^[a-zA-Z\\s]+$");
         }
 
-        public bool validatePhone(string phone)
+        public bool validateNumber(string phone)
         {
             return Regex.IsMatch(phone, "^[0-9]+$");
         }
