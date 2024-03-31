@@ -47,8 +47,19 @@ namespace NhaKhoaCuoiKy.dbs
             get { return sqlCon; }
         }
 
-        public void openConnection() { sqlCon.Open(); }
+        public void openConnection() {
+            if (sqlCon.State == System.Data.ConnectionState.Closed)
+            {
+                sqlCon.Open();
+            }
+        }
 
-        public void closeConnection() { sqlCon.Close(); } 
+        public void closeConnection() {
+
+            if (sqlCon.State == System.Data.ConnectionState.Open)
+            {
+                sqlCon.Close();
+            }
+        } 
     }
 }
