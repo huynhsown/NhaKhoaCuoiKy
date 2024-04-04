@@ -126,8 +126,13 @@ namespace NhaKhoaCuoiKy.Views.Service
                 int time = Convert.ToInt32(tb_time.Text);
                 string detail = tb_detail.Text.Trim();
                 int id = ServiceHelper.addNewService(category_id, title, price, discount, warranty, unit, time, detail);
-                if (id != -1) MessageBox.Show("Thêm dịch vụ thành công", "Thêm dịch vụ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                else {
+                if (id != -1)
+                {
+                    MessageBox.Show("Thêm dịch vụ thành công", "Thêm dịch vụ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Close();
+                }
+                else
+                {
                     MessageBox.Show("Thêm dịch vụ thất bại", "Thêm dịch vụ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }

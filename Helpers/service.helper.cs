@@ -32,14 +32,39 @@ namespace NhaKhoaCuoiKy.Helpers
                 }
                 db.closeConnection();
             }
-            catch (Exception ex)
+            catch
             {
-                // Xử lý ngoại lệ ở đây
-                throw ex;
+                throw;
             }
             return dt;
         }
 
+        public static bool checkCategoryByName(string categoryName)
+        {
+            Database db = new Database();
+            bool check = false;
+            try
+            {
+                db.openConnection();
+                using(SqlCommand cmd = new SqlCommand("checkCategoryByName", db.getConnection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@TenLoaiDichVu", categoryName);
+                    int count = (int)cmd.ExecuteScalar();
+                    if (count > 0) check = true;
+                }
+                db.closeConnection();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                db.closeConnection();
+            }
+            return check;
+        }
 
         public static DynamicParameters addNewCategory(string category)
         {
@@ -267,16 +292,45 @@ namespace NhaKhoaCuoiKy.Helpers
             return dt;
         }
 
-/*        public static bool updateCategory(int id, string text)
+        public static DataTable getCategoryByID(int id)
         {
             Database db = new Database();
+            DataTable dt = new DataTable();
             try
             {
                 db.openConnection();
-                using (SqlCommand cmd = new SqlCommand("getServiceByCategoryID", db.getConnection))
+                using(SqlCommand cmd = new SqlCommand("getCategoryByID", db.getConnection))
+                {
+                    cmd.CommandType= CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@MaLoaiDichVu", id);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    dt.Load(reader);
+                    reader.Close();
+                }
+                db.closeConnection();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                db.closeConnection() ;
+            }
+            return dt;
+        }
+
+        public static DataTable getCategoryByTitle(string title)
+        {
+            Database db = new Database();
+            DataTable dt = new DataTable();
+            try
+            {
+                db.openConnection();
+                using (SqlCommand cmd = new SqlCommand("getCategoryByTitle", db.getConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@MaLoaiDichVu", id);
+                    cmd.Parameters.AddWithValue("@LoaiDichVu", title);
                     SqlDataReader reader = cmd.ExecuteReader();
                     dt.Load(reader);
                     reader.Close();
@@ -292,6 +346,36 @@ namespace NhaKhoaCuoiKy.Helpers
                 db.closeConnection();
             }
             return dt;
-        }*/
+        }
+
+        public static bool updateCategory(int id, string title)
+        {
+            Database db = new Database();
+            bool check = false;
+            try
+            {
+                db.openConnection();
+                using (SqlCommand cmd = new SqlCommand("updateCategory", db.getConnection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@MaLoaiDichVu", id);
+                    cmd.Parameters.AddWithValue("@TenLoaiDichVu", title);
+                    if(cmd.ExecuteNonQuery() > 0)
+                    {
+                        check = true;
+                    }
+                }
+                db.closeConnection();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                db.closeConnection();
+            }
+            return check;
+        }
     }
 }

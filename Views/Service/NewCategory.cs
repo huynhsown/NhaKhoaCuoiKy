@@ -29,6 +29,7 @@ namespace NhaKhoaCuoiKy.Views.Service
         public DynamicParameters p;
         private Servicee serviceForm;
         private int categoryID;
+        private string title;
         public NewCategory()
         {
             InitializeComponent();
@@ -44,7 +45,7 @@ namespace NhaKhoaCuoiKy.Views.Service
             this.serviceForm = serviceForm;
         }
 
-        public NewCategory(Servicee serviceForm, int categoryID)
+        public NewCategory(Servicee serviceForm, int categoryID, string title)
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
@@ -56,6 +57,8 @@ namespace NhaKhoaCuoiKy.Views.Service
             btn_edit.Enabled = true;
             btn_add.Visible = false;
             btn_add.Enabled = false;
+            this.title = title;
+            tb_category.Text = title;
         }
 
         private void NewCategory_Load(object sender, EventArgs e)
@@ -73,6 +76,11 @@ namespace NhaKhoaCuoiKy.Views.Service
             if (tb_category.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Vui lòng nhập loại dịch vụ!", "Loại dịch vụ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (ServiceHelper.checkCategoryByName(tb_category.Text.Trim()))
+            {
+                MessageBox.Show("Loại dịch vụ đã tồn tại", "Loại dịch vụ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             try
@@ -97,6 +105,21 @@ namespace NhaKhoaCuoiKy.Views.Service
             {
                 MessageBox.Show("Vui lòng nhập loại dịch vụ!", "Loại dịch vụ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+            try
+            {
+                if(ServiceHelper.updateCategory(categoryID, tb_category.Text.Trim()))
+                {
+                    MessageBox.Show("Thanh cong");
+                }
+                else
+                {
+                    MessageBox.Show("That bai");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

@@ -61,14 +61,8 @@ namespace NhaKhoaCuoiKy.Views.Service
         {
             try
             {
-                data_loaiDichvu.Rows.Clear();
                 DataTable dt = ServiceHelper.getAllServiceCategory();
-                foreach (DataRow dr in dt.Rows)
-                {
-                    int id = int.Parse(dr[0].ToString());
-                    string txt = dr[1].ToString();
-                    data_loaiDichvu.Rows.Add(id, txt);
-                }
+                loadCategory(dt);
             }
             catch (Exception ex)
             {
@@ -76,22 +70,38 @@ namespace NhaKhoaCuoiKy.Views.Service
             }
         }
 
+        private void loadCategory(DataTable dt)
+        {
+            data_loaiDichvu.Rows.Clear();
+            foreach (DataRow dr in dt.Rows)
+            {
+                int id = Convert.ToInt32(dr[0]);
+                string txt = dr[1].ToString();
+                data_loaiDichvu.Rows.Add(id, txt);
+            }
+        }
+
         private void loadAllService()
         {
             try
             {
-                data_category_items.Rows.Clear();
                 DataTable dt = ServiceHelper.getAllService();
-                foreach (DataRow dr in dt.Rows)
-                {
-                    int id = Convert.ToInt32(dr[0]);
-                    string txt = dr[1].ToString();
-                    data_category_items.Rows.Add(id, txt);
-                }
+                loadService(dt);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void loadService(DataTable dt)
+        {
+            data_category_items.Rows.Clear();
+            foreach (DataRow dr in dt.Rows)
+            {
+                int id = Convert.ToInt32(dr[0]);
+                string txt = dr[1].ToString();
+                data_category_items.Rows.Add(id, txt);
             }
         }
 
@@ -148,6 +158,7 @@ namespace NhaKhoaCuoiKy.Views.Service
                         {
                             MessageBox.Show("Xóa thành công", "Xóa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             loadAllCategory();
+                            loadAllService();
                         }
                         else
                         {
@@ -161,7 +172,7 @@ namespace NhaKhoaCuoiKy.Views.Service
                     FormBackGround formBackGround = new FormBackGround(mainForm);
                     try
                     {
-                        using (NewCategory newCategory = new NewCategory(this, Convert.ToInt32(data_loaiDichvu.Rows[e.RowIndex].Cells[0].Value)))
+                        using (NewCategory newCategory = new NewCategory(this, Convert.ToInt32(data_loaiDichvu.Rows[e.RowIndex].Cells[0].Value), data_loaiDichvu.Rows[e.RowIndex].Cells[1].Value.ToString()))
                         {
                             formBackGround.Owner = mainForm;
                             formBackGround.Show();
@@ -235,6 +246,25 @@ namespace NhaKhoaCuoiKy.Views.Service
         private void btn_refesh_service_Click(object sender, EventArgs e)
         {
             loadAllService();
+        }
+
+        private void btn_search_category_Click(object sender, EventArgs e)
+        {
+            int index = cb_category_search.SelectedIndex;
+            int id;
+            if (index == 0)
+            {                
+                if(!Int32.TryParse(tb_category_search.Text, out id))
+                {
+                    MessageBox.Show("Vui lòng nhập số", "Tìm kiếm loại dịch vụ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+                loadCategory(ServiceHelper.getCategoryByID(id));
+            }
+            else if(index == 1)
+            {
+                loadCategory(ServiceHelper.getCategoryByTitle(tb_category_search.Text.Trim()));
+            }
         }
     }
 }
