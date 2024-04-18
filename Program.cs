@@ -1,4 +1,5 @@
 using NhaKhoaCuoiKy.Views;
+using NhaKhoaCuoiKy.Views.Appointment;
 
 namespace NhaKhoaCuoiKy
 {

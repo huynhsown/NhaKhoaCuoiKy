@@ -1,5 +1,6 @@
 ﻿using Guna.UI2.WinForms;
 using NhaKhoaCuoiKy.dbs;
+using NhaKhoaCuoiKy.Views.Appointment;
 using NhaKhoaCuoiKy.Views.Service;
 
 namespace NhaKhoaCuoiKy.Views
@@ -15,13 +16,14 @@ namespace NhaKhoaCuoiKy.Views
         private Patient patient = new Patient();
         private Servicee service;
         private AddNewRecord newRecord;
+        private AppointMent newAppointment;
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             panel_btn_employee.AutoSize = true;
         }
 
-        private void openChildForm(Form childForm)
+        public void openChildForm(Form childForm)
         {
             if (currentForm != null) currentForm.Close();
             currentForm = childForm;
@@ -49,7 +51,7 @@ namespace NhaKhoaCuoiKy.Views
             }
         }
 
-        private void openChildFormHaveData(Form childForm)
+        public void openChildFormHaveData(Form childForm)
         {
             currentForm = childForm;
             childForm.TopLevel = false;
@@ -176,6 +178,13 @@ namespace NhaKhoaCuoiKy.Views
             closeAllPanel();
             service?.Close();
             openChildForm(service = new Servicee(this));
+        }
+
+        private void btn_appointment_Click(object sender, EventArgs e)
+        {
+            closeAllPanel();
+            newAppointment?.Close();
+            openChildForm(newAppointment = new AppointMent(this));
         }
     }
 }

@@ -44,8 +44,11 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             panelSideMenu = new Panel();
+            btn_appointment = new Guna.UI2.WinForms.Guna2Button();
             btn_service = new Guna.UI2.WinForms.Guna2Button();
             panel_btn_employee = new Panel();
             btn_protector = new Guna.UI2.WinForms.Guna2Button();
@@ -68,6 +71,7 @@
             // 
             panelSideMenu.AutoScroll = true;
             panelSideMenu.BackColor = Color.FromArgb(17, 34, 71);
+            panelSideMenu.Controls.Add(btn_appointment);
             panelSideMenu.Controls.Add(btn_service);
             panelSideMenu.Controls.Add(panel_btn_employee);
             panelSideMenu.Controls.Add(btn_employee);
@@ -82,11 +86,38 @@
             panelSideMenu.Size = new Size(250, 853);
             panelSideMenu.TabIndex = 0;
             // 
+            // btn_appointment
+            // 
+            btn_appointment.BackColor = Color.Transparent;
+            btn_appointment.BorderRadius = 8;
+            btn_appointment.CustomizableEdges = customizableEdges1;
+            btn_appointment.DisabledState.BorderColor = Color.DarkGray;
+            btn_appointment.DisabledState.CustomBorderColor = Color.DarkGray;
+            btn_appointment.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btn_appointment.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btn_appointment.Dock = DockStyle.Top;
+            btn_appointment.FillColor = Color.Transparent;
+            btn_appointment.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_appointment.ForeColor = Color.White;
+            btn_appointment.Image = Properties.Resources.icons8_appointment_100;
+            btn_appointment.ImageAlign = HorizontalAlignment.Left;
+            btn_appointment.ImageOffset = new Point(10, 0);
+            btn_appointment.Location = new Point(0, 567);
+            btn_appointment.Margin = new Padding(10);
+            btn_appointment.Name = "btn_appointment";
+            btn_appointment.Padding = new Padding(10, 0, 0, 0);
+            btn_appointment.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btn_appointment.Size = new Size(250, 56);
+            btn_appointment.TabIndex = 7;
+            btn_appointment.Text = "Lịch hẹn";
+            btn_appointment.TextAlign = HorizontalAlignment.Left;
+            btn_appointment.Click += btn_appointment_Click;
+            // 
             // btn_service
             // 
             btn_service.BackColor = Color.Transparent;
             btn_service.BorderRadius = 8;
-            btn_service.CustomizableEdges = customizableEdges1;
+            btn_service.CustomizableEdges = customizableEdges3;
             btn_service.DisabledState.BorderColor = Color.DarkGray;
             btn_service.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_service.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -102,7 +133,7 @@
             btn_service.Margin = new Padding(10);
             btn_service.Name = "btn_service";
             btn_service.Padding = new Padding(10, 0, 0, 0);
-            btn_service.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btn_service.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btn_service.Size = new Size(250, 56);
             btn_service.TabIndex = 6;
             btn_service.Text = "Dịch vụ";
@@ -126,7 +157,7 @@
             // 
             btn_protector.BackColor = Color.Transparent;
             btn_protector.BorderRadius = 8;
-            btn_protector.CustomizableEdges = customizableEdges3;
+            btn_protector.CustomizableEdges = customizableEdges5;
             btn_protector.DisabledState.BorderColor = Color.DarkGray;
             btn_protector.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_protector.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -142,7 +173,7 @@
             btn_protector.Margin = new Padding(10);
             btn_protector.Name = "btn_protector";
             btn_protector.Padding = new Padding(45, 0, 0, 0);
-            btn_protector.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btn_protector.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btn_protector.Size = new Size(250, 56);
             btn_protector.TabIndex = 7;
             btn_protector.Text = "Bảo vệ";
@@ -152,7 +183,7 @@
             // 
             btn_nurse.BackColor = Color.Transparent;
             btn_nurse.BorderRadius = 8;
-            btn_nurse.CustomizableEdges = customizableEdges5;
+            btn_nurse.CustomizableEdges = customizableEdges7;
             btn_nurse.DisabledState.BorderColor = Color.DarkGray;
             btn_nurse.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_nurse.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -168,7 +199,7 @@
             btn_nurse.Margin = new Padding(10);
             btn_nurse.Name = "btn_nurse";
             btn_nurse.Padding = new Padding(45, 0, 0, 0);
-            btn_nurse.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btn_nurse.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btn_nurse.Size = new Size(250, 56);
             btn_nurse.TabIndex = 6;
             btn_nurse.Text = "Y tá";
@@ -178,7 +209,7 @@
             // 
             btn_employee_Doctor.BackColor = Color.Transparent;
             btn_employee_Doctor.BorderRadius = 8;
-            btn_employee_Doctor.CustomizableEdges = customizableEdges7;
+            btn_employee_Doctor.CustomizableEdges = customizableEdges9;
             btn_employee_Doctor.DisabledState.BorderColor = Color.DarkGray;
             btn_employee_Doctor.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_employee_Doctor.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -194,7 +225,7 @@
             btn_employee_Doctor.Margin = new Padding(10);
             btn_employee_Doctor.Name = "btn_employee_Doctor";
             btn_employee_Doctor.Padding = new Padding(45, 0, 0, 0);
-            btn_employee_Doctor.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btn_employee_Doctor.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btn_employee_Doctor.Size = new Size(250, 56);
             btn_employee_Doctor.TabIndex = 5;
             btn_employee_Doctor.Text = "Bác sĩ";
@@ -204,7 +235,7 @@
             // 
             btn_employee.BackColor = Color.Transparent;
             btn_employee.BorderRadius = 8;
-            btn_employee.CustomizableEdges = customizableEdges9;
+            btn_employee.CustomizableEdges = customizableEdges11;
             btn_employee.DisabledState.BorderColor = Color.DarkGray;
             btn_employee.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_employee.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -220,7 +251,7 @@
             btn_employee.Margin = new Padding(10);
             btn_employee.Name = "btn_employee";
             btn_employee.Padding = new Padding(10, 0, 0, 0);
-            btn_employee.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btn_employee.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btn_employee.Size = new Size(250, 56);
             btn_employee.TabIndex = 4;
             btn_employee.Text = "Nhân viên";
@@ -233,7 +264,7 @@
             // 
             btn_patient.BackColor = Color.Transparent;
             btn_patient.BorderRadius = 8;
-            btn_patient.CustomizableEdges = customizableEdges11;
+            btn_patient.CustomizableEdges = customizableEdges13;
             btn_patient.DisabledState.BorderColor = Color.DarkGray;
             btn_patient.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_patient.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -249,7 +280,7 @@
             btn_patient.Margin = new Padding(10);
             btn_patient.Name = "btn_patient";
             btn_patient.Padding = new Padding(10, 0, 0, 0);
-            btn_patient.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            btn_patient.ShadowDecoration.CustomizableEdges = customizableEdges14;
             btn_patient.Size = new Size(250, 56);
             btn_patient.TabIndex = 3;
             btn_patient.Text = "Bệnh nhân";
@@ -262,7 +293,7 @@
             // 
             btn_exit.BackColor = Color.Transparent;
             btn_exit.BorderRadius = 5;
-            btn_exit.CustomizableEdges = customizableEdges13;
+            btn_exit.CustomizableEdges = customizableEdges15;
             btn_exit.DisabledState.BorderColor = Color.DarkGray;
             btn_exit.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_exit.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -278,7 +309,7 @@
             btn_exit.Margin = new Padding(10);
             btn_exit.Name = "btn_exit";
             btn_exit.Padding = new Padding(10, 0, 0, 0);
-            btn_exit.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            btn_exit.ShadowDecoration.CustomizableEdges = customizableEdges16;
             btn_exit.Size = new Size(250, 56);
             btn_exit.TabIndex = 2;
             btn_exit.Text = "Thoát";
@@ -291,7 +322,7 @@
             // 
             btn_home.BackColor = Color.Transparent;
             btn_home.BorderRadius = 8;
-            btn_home.CustomizableEdges = customizableEdges15;
+            btn_home.CustomizableEdges = customizableEdges17;
             btn_home.DisabledState.BorderColor = Color.DarkGray;
             btn_home.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_home.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -307,7 +338,7 @@
             btn_home.Margin = new Padding(10);
             btn_home.Name = "btn_home";
             btn_home.Padding = new Padding(10, 0, 0, 0);
-            btn_home.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            btn_home.ShadowDecoration.CustomizableEdges = customizableEdges18;
             btn_home.Size = new Size(250, 56);
             btn_home.TabIndex = 1;
             btn_home.Text = "Trang chủ";
@@ -371,12 +402,13 @@
         private Guna.UI2.WinForms.Guna2Button btn_exit;
         private Guna.UI2.WinForms.Guna2Button btn_patient;
         private PictureBox pictureBox1;
-        private Panel panelMain;
         private Guna.UI2.WinForms.Guna2Button btn_employee;
         private Panel panel_btn_employee;
         private Guna.UI2.WinForms.Guna2Button btn_nurse;
         private Guna.UI2.WinForms.Guna2Button btn_employee_Doctor;
         private Guna.UI2.WinForms.Guna2Button btn_protector;
         private Guna.UI2.WinForms.Guna2Button btn_service;
+        private Guna.UI2.WinForms.Guna2Button btn_appointment;
+        public Panel panelMain;
     }
 }
