@@ -67,13 +67,6 @@ namespace NhaKhoaCuoiKy.Views.Appointment
                     form.Owner = formBackGround;
                     form.ShowDialog();
                     formBackGround.Dispose();
-
-                    createAppointment.createEditSuccees += (s, e) =>
-                    {
-                        DateOnly d = DateOnly.Parse(createAppointment.date.ToShortDateString());
-                        loadWork(d);
-                        MessageBox.Show("OK");
-                    };
                 }
             }
             catch (Exception)
@@ -127,13 +120,13 @@ namespace NhaKhoaCuoiKy.Views.Appointment
                 schedules = schedules.OrderBy(schedule => schedule.Start).ToList();
                 if (schedules.Count == 0)
                 {
-                    emptySchedules.Add(new EmptyScheduleModel(DateTime.Parse(date.ToShortDateString()), DateTime.Parse(date.ToShortDateString()).Add(lastSecond)));
+                    emptySchedules.Add(new EmptyScheduleModel(DateTime.Parse(date.ToShortDateString()).Add(startWork), DateTime.Parse(date.ToShortDateString()).Add(endWork)));
                     return;
                 }
                 for (int i = 0; i < schedules.Count; i++)
                 {
                     ScheduleModel schedule = schedules[i];
-                    data_bacsi.Rows.Add(i + 1, schedule.ScheduleType, schedule.Start.ToString("HH:mm:ss"), schedule.End.ToString("HH:mm:ss"));
+                    data_bacsi.Rows.Add(i + 1, schedule.ScheduleType, schedule.Start.ToString("HH:mm:ss"), schedule.End.ToString("HH:mm:ss"), schedule.ScheduleTypeID);
                     if (i == 0 && schedule.Start.TimeOfDay != startWork)
                     {
                         emptySchedules.Add(new EmptyScheduleModel(DateTime.Parse(date.ToShortDateString()).Add(startWork), schedule.Start));
@@ -166,8 +159,21 @@ namespace NhaKhoaCuoiKy.Views.Appointment
         private void data_bacsi_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int col = e.ColumnIndex;
+            int row = e.RowIndex;
             if (data_bacsi.Columns[col].Name == "col_btn_detail")
             {
+                loadForm(new EditAppointment(Convert.ToInt32(data_bacsi.Rows[row].Cells[4].Value), emptySchedules, schedules));
+            }
+            if (data_bacsi.Columns[col].Name == "col_btn_delete")
+            {
+                if (data_bacsi.Rows[row].Cells[1].Value.ToString() == "Lịch hẹn")
+                {
+                    DialogResult dr = MessageBox.Show("Bạn có chắc xóa lịch hẹn này", "Lịch hẹn", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dr == DialogResult.Yes)
+                    {
+
+                    }
+                }
             }
         }
     }

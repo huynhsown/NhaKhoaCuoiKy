@@ -13,7 +13,7 @@ namespace NhaKhoaCuoiKy.Views
         public DynamicParameters p { get; set; }
         public EventHandler eventAddPatient;
         private Validate validate = new Validate();
-        private Patient patient;
+        private Patient patientForm;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -34,9 +34,9 @@ namespace NhaKhoaCuoiKy.Views
         public NewPatient(Patient patient)
         {
             InitializeComponent();
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.patient = patient;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.patientForm = patient;
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -102,7 +102,8 @@ namespace NhaKhoaCuoiKy.Views
 
                 PatientModel patient = new PatientModel();
                 p = patient.addPatient(name, gender, birth, homenum, ward, city, img, phone, street);
-                eventAddPatient?.Invoke(sender, e);
+                patientForm.addToDataGrid(patient.getAllPatient());
+                Close();
             }
             catch (Exception ex)
             {

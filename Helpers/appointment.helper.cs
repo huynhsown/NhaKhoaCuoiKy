@@ -183,5 +183,90 @@ namespace NhaKhoaCuoiKy.Helpers
             }
             return check;
         }
+
+        public static DataTable getAppontmentByID(int appointmentID)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                Database db = new Database();
+                db.openConnection();
+                using(SqlCommand cmd = new SqlCommand("getAppointmentByID", db.getConnection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@MaLichHen", appointmentID);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    dt.Load(reader);
+                    reader.Close();
+                }
+                db.closeConnection();
+            }
+            catch
+            {
+                throw;
+            }
+            finally { }
+            return dt;
+        }
+
+        public static bool removeAppointment(int appointmentID)
+        {
+            Database db = null;
+            bool check = false;
+            try
+            {
+                db = new Database();
+                db.openConnection();
+                using(SqlCommand cmd = new SqlCommand("removeAppointment", db.getConnection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@MaLichHen", appointmentID );
+                    if (cmd.ExecuteNonQuery() > 0) check = true;
+                    db.closeConnection();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if(db != null) db.closeConnection(); 
+            }
+            return check;
+        }
+
+        public static bool updateAppointment(int appointmentID, string name, string phone, string address, DateTime start, int time, string detail)
+        {
+            Database db = null;
+            bool check = false;
+            try
+            {
+                db = new Database();
+                db.openConnection();
+                using (SqlCommand cmd = new SqlCommand("updateAppointment", db.getConnection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@MaLichHen", appointmentID);
+                    cmd.Parameters.AddWithValue("@TenKhachHang", name);
+                    cmd.Parameters.AddWithValue("@SoDienThoaiKhachHang", phone);
+                    cmd.Parameters.AddWithValue("@DiaChi", address);
+                    cmd.Parameters.AddWithValue("@BatDau", start);
+                    cmd.Parameters.AddWithValue("@ThoiGian", time);
+                    cmd.Parameters.AddWithValue("@NoiDung", detail);
+                    if (cmd.ExecuteNonQuery() > 0) check = true;
+                    db.closeConnection();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (db != null) db.closeConnection();
+            }
+            return check;
+        }
     }
 }

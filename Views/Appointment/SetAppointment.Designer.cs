@@ -28,32 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             monthCalendar = new MonthCalendar();
             panel1 = new Panel();
-            button1 = new Button();
             btn_search = new Guna.UI2.WinForms.Guna2Button();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             panel2 = new Panel();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             data_bacsi = new Guna.UI2.WinForms.Guna2DataGridView();
-            schedule_label = new Guna.UI2.WinForms.Guna2HtmlLabel();
             Column2 = new DataGridViewTextBoxColumn();
             Column1 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
             col_btn_detail = new DataGridViewButtonColumn();
             col_btn_delete = new DataGridViewButtonColumn();
+            schedule_label = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             guna2Panel1.SuspendLayout();
@@ -68,7 +71,7 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(guna2Button2);
             panel1.Controls.Add(btn_search);
             panel1.Controls.Add(guna2HtmlLabel1);
             panel1.Controls.Add(monthCalendar);
@@ -78,20 +81,10 @@
             panel1.Size = new Size(334, 806);
             panel1.TabIndex = 1;
             // 
-            // button1
-            // 
-            button1.Location = new Point(169, 381);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 10;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // btn_search
             // 
             btn_search.BorderRadius = 5;
-            btn_search.CustomizableEdges = customizableEdges1;
+            btn_search.CustomizableEdges = customizableEdges3;
             btn_search.DisabledState.BorderColor = Color.DarkGray;
             btn_search.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_search.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -100,9 +93,9 @@
             btn_search.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btn_search.ForeColor = Color.White;
             btn_search.ImageAlign = HorizontalAlignment.Left;
-            btn_search.Location = new Point(114, 270);
+            btn_search.Location = new Point(110, 270);
             btn_search.Name = "btn_search";
-            btn_search.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btn_search.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btn_search.Size = new Size(109, 36);
             btn_search.TabIndex = 9;
             btn_search.Text = "Chọn";
@@ -120,7 +113,7 @@
             // 
             // guna2Button1
             // 
-            guna2Button1.CustomizableEdges = customizableEdges3;
+            guna2Button1.CustomizableEdges = customizableEdges5;
             guna2Button1.DisabledState.BorderColor = Color.DarkGray;
             guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -129,7 +122,7 @@
             guna2Button1.ForeColor = Color.White;
             guna2Button1.Location = new Point(486, 731);
             guna2Button1.Name = "guna2Button1";
-            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges6;
             guna2Button1.Size = new Size(225, 56);
             guna2Button1.TabIndex = 2;
             guna2Button1.Text = "guna2Button1";
@@ -151,10 +144,10 @@
             guna2Panel1.BorderRadius = 15;
             guna2Panel1.BorderThickness = 1;
             guna2Panel1.Controls.Add(data_bacsi);
-            guna2Panel1.CustomizableEdges = customizableEdges5;
+            guna2Panel1.CustomizableEdges = customizableEdges7;
             guna2Panel1.Location = new Point(42, 51);
             guna2Panel1.Name = "guna2Panel1";
-            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2Panel1.Size = new Size(786, 720);
             guna2Panel1.TabIndex = 11;
             // 
@@ -179,7 +172,7 @@
             data_bacsi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             data_bacsi.ColumnHeadersHeight = 46;
             data_bacsi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            data_bacsi.Columns.AddRange(new DataGridViewColumn[] { Column2, Column1, Column3, Column4, col_btn_detail, col_btn_delete });
+            data_bacsi.Columns.AddRange(new DataGridViewColumn[] { Column2, Column1, Column3, Column4, Column5, col_btn_detail, col_btn_delete });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -229,16 +222,6 @@
             data_bacsi.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             data_bacsi.CellContentClick += data_bacsi_CellContentClick;
             // 
-            // schedule_label
-            // 
-            schedule_label.BackColor = Color.Transparent;
-            schedule_label.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            schedule_label.Location = new Point(42, 12);
-            schedule_label.Name = "schedule_label";
-            schedule_label.Size = new Size(78, 27);
-            schedule_label.TabIndex = 10;
-            schedule_label.Text = "Lịch trình:";
-            // 
             // Column2
             // 
             Column2.FillWeight = 60F;
@@ -268,6 +251,14 @@
             Column4.Name = "Column4";
             Column4.ReadOnly = true;
             // 
+            // Column5
+            // 
+            Column5.HeaderText = "Schedulet Type ID";
+            Column5.MinimumWidth = 6;
+            Column5.Name = "Column5";
+            Column5.ReadOnly = true;
+            Column5.Visible = false;
+            // 
             // col_btn_detail
             // 
             col_btn_detail.HeaderText = "Xem chi tiết";
@@ -286,6 +277,35 @@
             col_btn_delete.ReadOnly = true;
             col_btn_delete.Text = "Xóa";
             col_btn_delete.UseColumnTextForButtonValue = true;
+            // 
+            // schedule_label
+            // 
+            schedule_label.BackColor = Color.Transparent;
+            schedule_label.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            schedule_label.Location = new Point(42, 12);
+            schedule_label.Name = "schedule_label";
+            schedule_label.Size = new Size(78, 27);
+            schedule_label.TabIndex = 10;
+            schedule_label.Text = "Lịch trình:";
+            // 
+            // guna2Button2
+            // 
+            guna2Button2.BorderRadius = 5;
+            guna2Button2.CustomizableEdges = customizableEdges1;
+            guna2Button2.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2Button2.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button2.FillColor = Color.FromArgb(17, 34, 71);
+            guna2Button2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            guna2Button2.ForeColor = Color.White;
+            guna2Button2.ImageAlign = HorizontalAlignment.Left;
+            guna2Button2.Location = new Point(110, 353);
+            guna2Button2.Name = "guna2Button2";
+            guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            guna2Button2.Size = new Size(109, 36);
+            guna2Button2.TabIndex = 10;
+            guna2Button2.Text = "Đặt lịch";
             // 
             // SetAppointment
             // 
@@ -319,12 +339,13 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel schedule_label;
         private Guna.UI2.WinForms.Guna2DataGridView data_bacsi;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Button button1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
         private DataGridViewButtonColumn col_btn_detail;
         private DataGridViewButtonColumn col_btn_delete;
+        private Guna.UI2.WinForms.Guna2Button guna2Button2;
     }
 }

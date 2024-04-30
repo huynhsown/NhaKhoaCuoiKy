@@ -15,7 +15,6 @@ namespace NhaKhoaCuoiKy.Views
         private Form currentForm;
         private Patient patient = new Patient();
         private Servicee service;
-        private AddNewRecord newRecord;
         private AppointMent newAppointment;
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -35,20 +34,6 @@ namespace NhaKhoaCuoiKy.Views
             childForm.BringToFront();
             childForm.Show();
 
-            if (patient != null)
-            {
-                patient.popupNewPatient += (s, e) =>
-                {
-
-                };
-
-                patient.addNewRecord += (s, e) =>
-                {
-                    newRecord?.Close();
-                    newRecord = new AddNewRecord();
-                    openChildFormHaveData(newRecord);
-                };
-            }
         }
 
         public void openChildFormHaveData(Form childForm)
@@ -61,14 +46,6 @@ namespace NhaKhoaCuoiKy.Views
             panelMain.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
-
-            if (newRecord != null)
-            {
-                newRecord.backToPatient += (s, e) =>
-                {
-                    openChildForm(patient);
-                };
-            }
         }
 
         private void btn_home_Click(object sender, EventArgs e)

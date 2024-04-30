@@ -61,11 +61,10 @@ namespace NhaKhoaCuoiKy.Views.Appointment
         {
             foreach (EmptyScheduleModel model in emptySchedules)
             {
-                DateTime dt = date.Add(time_picker.Value.TimeOfDay);
+                DateTime dt = time_picker.Value;
                 DateTime end = dt.AddMinutes(Convert.ToInt32(tb_time.Text));
-                if ((dt.TimeOfDay < model.Start.TimeOfDay || dt.TimeOfDay > model.End.TimeOfDay) && (end.TimeOfDay < model.Start.TimeOfDay || end.TimeOfDay > model.End.TimeOfDay))
+                if (dt.TimeOfDay >= model.Start.TimeOfDay && end.TimeOfDay <= model.End.TimeOfDay)
                 {
-                    MessageBox.Show(dt.TimeOfDay.ToString() + '-' + model.ToString() + "    " + (dt.TimeOfDay < model.Start.TimeOfDay));
                     return true;
                 }
             }

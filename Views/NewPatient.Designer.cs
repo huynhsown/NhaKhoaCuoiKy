@@ -554,6 +554,7 @@
             Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(tb_name);
+            FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "NewPatient";
