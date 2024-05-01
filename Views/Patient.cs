@@ -52,23 +52,23 @@ namespace NhaKhoaCuoiKy.Views
         {
             loadForm(new NewPatient(this));
 
-/*            FormBackGround formBackGround = new FormBackGround(mainForm);
-            try
-            {
-                using (NewPatient newCategory = new NewPatient(this))
-                {
-                    formBackGround.Owner = mainForm;
-                    formBackGround.Show();
-                    newCategory.Owner = formBackGround;
-                    newCategory.ShowDialog();
-                    formBackGround.Dispose();
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Đã xảy ra lỗi! Vui lòng thử lại.", "Thông báo",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }*/
+            /*            FormBackGround formBackGround = new FormBackGround(mainForm);
+                        try
+                        {
+                            using (NewPatient newCategory = new NewPatient(this))
+                            {
+                                formBackGround.Owner = mainForm;
+                                formBackGround.Show();
+                                newCategory.Owner = formBackGround;
+                                newCategory.ShowDialog();
+                                formBackGround.Dispose();
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Đã xảy ra lỗi! Vui lòng thử lại.", "Thông báo",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }*/
         }
 
         private void Patient_Load(object sender, EventArgs e)

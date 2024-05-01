@@ -1,3 +1,5 @@
+USE NHAKHOA
+GO
 CREATE PROCEDURE [dbo].[getByPhone]
 	@SoDienThoai VARCHAR(50)
 AS

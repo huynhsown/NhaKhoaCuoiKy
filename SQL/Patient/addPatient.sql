@@ -1,3 +1,5 @@
+USE NHAKHOA
+GO
 CREATE PROCEDURE [dbo].[addPatient]
 	@MaBenhNhan INT OUTPUT,
 	@HoVaTen nVARCHAR(255),

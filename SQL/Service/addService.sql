@@ -1,3 +1,5 @@
+USE NHAKHOA
+GO
 CREATE PROCEDURE [dbo].[addService]
 	@MaDichVu INT OUTPUT,
 	@MaLoaiDichVu INT,

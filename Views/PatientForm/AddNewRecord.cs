@@ -1,9 +1,11 @@
-﻿using NhaKhoaCuoiKy.Helpers;
+﻿using Guna.UI2.WinForms;
+using NhaKhoaCuoiKy.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +16,8 @@ namespace NhaKhoaCuoiKy.Views.PatientForm
     public partial class AddNewRecord : Form
     {
         int patienID;
+        PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
+        PrintDocument printDocument = new PrintDocument();
         public AddNewRecord(int patienID)
         {
             InitializeComponent();
@@ -40,8 +44,7 @@ namespace NhaKhoaCuoiKy.Views.PatientForm
             panel_reason.Location = new Point(21, 755); // Khoảng cách = 20
             panel_diagnose.Location = new Point(21, 1025);
             panel_plan.Location = new Point(21, 1435);
-            panel_abstract.Location = new Point(21, 2130);
-            panel1.Dispose();
+            panel_abstract.Location = new Point(21, 1850);
             loadPatientInfomation();
         }
 
@@ -83,5 +86,63 @@ namespace NhaKhoaCuoiKy.Views.PatientForm
                 MessageBox.Show("ERROR::" + ex.Message);
             }
         }
+
+        private void btn_createAppointment_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string DentalDisease = tb_DentalDisease.Text.Trim();
+                string OtherDisease = tb_OtherDisease.Text.Trim();
+                string Symptoms = tb_Symptoms.Text.Trim();
+                string Result = tb_Result.Text.Trim();
+                string Diagnosis = tb_Diagnosis.Text.Trim();
+                string TreatmentMethod = tb_TreatmentMethod.Text.Trim();
+                string NextAppointment = tb_NextAppointment.Text.Trim();
+                DateTime now = DateTime.Now;
+                if (PatientHelper.addNewRecord(patienID, 1, DentalDisease, OtherDisease, Symptoms, Result, Diagnosis, TreatmentMethod, NextAppointment, now))
+                {
+                    MessageBox.Show("Thêm bệnh án thành công", "Bệnh án", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Thêm bệnh án thất bại", "Bệnh án", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_print_Click(object sender, EventArgs e)
+        {
+            Print(panel_main);
+        }
+
+        void Print(Panel panel)
+        {
+            PrinterSettings ps = new PrinterSettings();
+            getPrintArea(panel);
+            printPreviewDialog.Document = printDocument;
+            printDocument.PrintPage += new PrintPageEventHandler(printDocument_print_page);
+            printPreviewDialog.ShowDialog();
+        }
+
+        void printDocument_print_page(object sender, PrintPageEventArgs e)
+        {
+            Rectangle pageArea = e.PageBounds;
+            e.Graphics.DrawImage(memoryIMG, 89, 600);
+        }
+
+        Bitmap memoryIMG;
+
+        void getPrintArea(Panel panel)
+        {
+            memoryIMG = new Bitmap(panel.Width, panel.Height);
+            panel.DrawToBitmap(memoryIMG, new Rectangle(0, 0, panel.Width, panel.Height));
+
+        }
+
+
     }
 }

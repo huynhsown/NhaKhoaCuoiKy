@@ -1,5 +1,7 @@
+USE NHAKHOA
+GO
 CREATE PROCEDURE [dbo].[getAllDoctorsByName]
-	@Ten nVARCHAR(MAX)
+	@Ten NVARCHAR(MAX)
 AS
 BEGIN
 	SELECT * FROM [dbo].[NHANVIEN] join [dbo].[BACSI] on [dbo].[NHANVIEN].MaNhanVien = [dbo].[BACSI].MaNhanVien WHERE [dbo].[NHANVIEN].HoVaTen LIKE '%' + @Ten + '%';

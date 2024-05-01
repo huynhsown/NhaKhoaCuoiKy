@@ -1,3 +1,6 @@
+USE NHAKHOA
+GO
+
 CREATE PROCEDURE [dbo].[createAppointment]
 	@MaLichHen INT OUT,
 	@MaNhanVien INT,

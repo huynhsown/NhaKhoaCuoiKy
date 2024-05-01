@@ -1,3 +1,5 @@
+USE NHAKHOA
+GO
 CREATE PROCEDURE [dbo].[updateAppointment]
 	@MaLichHen INT OUT,
 	@TenKhachHang NVARCHAR(255),

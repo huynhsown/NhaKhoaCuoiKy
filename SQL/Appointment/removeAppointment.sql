@@ -1,3 +1,5 @@
+USE NHAKHOA
+GO
 CREATE PROCEDURE [dbo].[removeApointment]
 	@MaLichHen INT
 AS

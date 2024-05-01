@@ -138,7 +138,7 @@ namespace NhaKhoaCuoiKy.Views.Service
                 }
                 DataTable dt = ServiceHelper.getServiceByID(id);
                 DataRow dr = dt.Rows[0];
-                service.data_category_items.Rows.Add(Convert.ToInt32(dr[0]),Convert.ToString(dr[1]));
+                service.data_category_items.Rows.Add(Convert.ToInt32(dr["MaDichVu"]),Convert.ToString(dr["TenDichVu"]));
             }
             catch (Exception ex)
             {
@@ -188,7 +188,6 @@ namespace NhaKhoaCuoiKy.Views.Service
 
         private void tb_unit_TextChanged(object sender, EventArgs e)
         {
-            warningValidate(tb_unit, validate.validateNumber(tb_unit.Text));
         }
 
         private void tb_time_TextChanged(object sender, EventArgs e)

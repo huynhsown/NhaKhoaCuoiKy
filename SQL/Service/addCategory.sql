@@ -1,3 +1,5 @@
+USE NHAKHOA
+GO
 CREATE PROCEDURE [dbo].[addCategory]
 	@MaLoaiDichVu INT OUTPUT,
 	@TenLoaiDichVu NVARCHAR(MAX)
