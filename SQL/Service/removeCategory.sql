@@ -1,3 +1,5 @@
+USE NHAKHOA
+GO
 CREATE PROCEDURE [dbo].[removeCategory]
 	@MaLoaiDichVu INT
 AS

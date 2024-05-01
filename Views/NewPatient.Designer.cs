@@ -65,7 +65,6 @@
             label2 = new Label();
             rdb_male = new Guna.UI2.WinForms.Guna2RadioButton();
             rdb_female = new Guna.UI2.WinForms.Guna2RadioButton();
-            rdb_other = new Guna.UI2.WinForms.Guna2RadioButton();
             btn_add = new Guna.UI2.WinForms.Guna2Button();
             pb_avt = new PictureBox();
             label8 = new Label();
@@ -344,7 +343,7 @@
             rdb_female.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
             rdb_female.CheckedState.InnerColor = Color.White;
             rdb_female.CheckedState.InnerOffset = -4;
-            rdb_female.Location = new Point(469, 178);
+            rdb_female.Location = new Point(551, 177);
             rdb_female.Name = "rdb_female";
             rdb_female.Size = new Size(50, 24);
             rdb_female.TabIndex = 23;
@@ -353,24 +352,6 @@
             rdb_female.UncheckedState.BorderThickness = 2;
             rdb_female.UncheckedState.FillColor = Color.Transparent;
             rdb_female.UncheckedState.InnerColor = Color.Transparent;
-            // 
-            // rdb_other
-            // 
-            rdb_other.AutoSize = true;
-            rdb_other.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
-            rdb_other.CheckedState.BorderThickness = 0;
-            rdb_other.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
-            rdb_other.CheckedState.InnerColor = Color.White;
-            rdb_other.CheckedState.InnerOffset = -4;
-            rdb_other.Location = new Point(539, 178);
-            rdb_other.Name = "rdb_other";
-            rdb_other.Size = new Size(62, 24);
-            rdb_other.TabIndex = 24;
-            rdb_other.Text = "Khác";
-            rdb_other.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
-            rdb_other.UncheckedState.BorderThickness = 2;
-            rdb_other.UncheckedState.FillColor = Color.Transparent;
-            rdb_other.UncheckedState.InnerColor = Color.Transparent;
             // 
             // btn_add
             // 
@@ -537,7 +518,6 @@
             Controls.Add(label8);
             Controls.Add(pb_avt);
             Controls.Add(btn_add);
-            Controls.Add(rdb_other);
             Controls.Add(rdb_female);
             Controls.Add(rdb_male);
             Controls.Add(label2);
@@ -554,6 +534,7 @@
             Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(tb_name);
+            FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "NewPatient";
@@ -587,7 +568,6 @@
         private Label label2;
         private Guna.UI2.WinForms.Guna2RadioButton rdb_male;
         private Guna.UI2.WinForms.Guna2RadioButton rdb_female;
-        private Guna.UI2.WinForms.Guna2RadioButton rdb_other;
         private Guna.UI2.WinForms.Guna2Button btn_add;
         private PictureBox pb_avt;
         private Label label8;

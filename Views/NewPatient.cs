@@ -1,8 +1,10 @@
 ﻿using Dapper;
 using Guna.UI2.WinForms;
+using NhaKhoaCuoiKy.Constant;
 using NhaKhoaCuoiKy.dbs;
 using NhaKhoaCuoiKy.Helpers;
 using NhaKhoaCuoiKy.Models;
+using NhaKhoaCuoiKy.Constant;
 using NhaKhoaCuoiKy.Views.Service;
 using System.Runtime.InteropServices;
 
@@ -13,7 +15,7 @@ namespace NhaKhoaCuoiKy.Views
         public DynamicParameters p { get; set; }
         public EventHandler eventAddPatient;
         private Validate validate = new Validate();
-        private Patient patient;
+        private Patient patientForm;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -34,9 +36,9 @@ namespace NhaKhoaCuoiKy.Views
         public NewPatient(Patient patient)
         {
             InitializeComponent();
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.patient = patient;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.patientForm = patient;
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -76,44 +78,44 @@ namespace NhaKhoaCuoiKy.Views
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            try
+
+            string name = tb_name.Text;
+            DateTime birth = dtp_birth.Value;
+            string phone = tb_phone.Text;
+            int homenum = int.Parse(tb_homenum.Text);
+            string ward = tb_ward.Text;
+            string city = tb_city.Text;
+            string gender = string.Empty;
+            string street = tb_street.Text;
+
+            if (rdb_male.Checked)
             {
-                string name = tb_name.Text;
-                DateTime birth = dtp_birth.Value;
-                string phone = tb_phone.Text;
-                int homenum = int.Parse(tb_homenum.Text);
-                string ward = tb_ward.Text;
-                string city = tb_city.Text;
-                string gender = "other";
-                string street = tb_street.Text;
-
-                if (rdb_male.Checked)
-                {
-                    gender = "male";
-                }
-                else if (rdb_female.Checked)
-                {
-                    gender = "female";
-                }
-
-                MemoryStream ms = new MemoryStream();
-                pb_avt.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                byte[] img = ms.ToArray();
-
-                PatientModel patient = new PatientModel();
-                p = patient.addPatient(name, gender, birth, homenum, ward, city, img, phone, street);
-                eventAddPatient?.Invoke(sender, e);
+                gender = "Nam";
             }
-            catch (Exception ex)
+            else if (rdb_female.Checked)
             {
-                MessageBox.Show("ERROR::" + ex.Message);
+                gender = "Nữ";
             }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn giới tính", "Bệnh nhân", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            MemoryStream ms = new MemoryStream();
+            pb_avt.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            byte[] img = ms.ToArray();
+
+            PatientModel patient = new PatientModel();
+            p = patient.addPatient(name, gender, birth, homenum, ward, city, img, phone, street);
+            patientForm.addToDataGrid(patient.getAllPatient());
+            Close();
 
         }
 
         private void tb_name_TextChanged(object sender, EventArgs e)
         {
-            warningValidate(pb_name, tb_name, validate.validateName(tb_name.Text));
+            warningValidate(pb_name, tb_name, ValidateVNI.validateNameVNI(tb_name.Text));
         }
 
         private void warningValidate(PictureBox picbox, Guna2TextBox tb, bool check)

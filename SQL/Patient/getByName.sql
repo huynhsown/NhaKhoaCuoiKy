@@ -1,3 +1,5 @@
+USE NHAKHOA
+GO
 CREATE PROCEDURE [dbo].[getByName]
 	@HoVaTen VARCHAR(255)
 AS

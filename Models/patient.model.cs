@@ -66,6 +66,26 @@ namespace NhaKhoaCuoiKy.Models
             return dt;
         }
 
+        public DataTable getAllPatient()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                db.openConnection();
+                using (SqlCommand cmd = new SqlCommand("select * from BENHNHAN", db.getConnection))
+                {
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    dt.Load(dr);
+                }
+                db.closeConnection();
+            }
+            catch
+            {
+                throw;
+            }
+            return dt;
+        }
+
         public DataTable getByName(string name)
         {
             DataTable dt = new DataTable();

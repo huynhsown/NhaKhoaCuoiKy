@@ -48,6 +48,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panelSideMenu = new Panel();
+            btn_appointment = new Guna.UI2.WinForms.Guna2Button();
             btn_service = new Guna.UI2.WinForms.Guna2Button();
             panel_btn_employee = new Panel();
             btn_protector = new Guna.UI2.WinForms.Guna2Button();
@@ -72,6 +73,7 @@
             panelSideMenu.AutoScroll = true;
             panelSideMenu.BackColor = Color.FromArgb(17, 34, 71);
             panelSideMenu.Controls.Add(btn_medicine);
+            panelSideMenu.Controls.Add(btn_appointment);
             panelSideMenu.Controls.Add(btn_service);
             panelSideMenu.Controls.Add(panel_btn_employee);
             panelSideMenu.Controls.Add(btn_employee);
@@ -85,6 +87,33 @@
             panelSideMenu.Name = "panelSideMenu";
             panelSideMenu.Size = new Size(250, 853);
             panelSideMenu.TabIndex = 0;
+            // 
+            // btn_appointment
+            // 
+            btn_appointment.BackColor = Color.Transparent;
+            btn_appointment.BorderRadius = 8;
+            btn_appointment.CustomizableEdges = customizableEdges1;
+            btn_appointment.DisabledState.BorderColor = Color.DarkGray;
+            btn_appointment.DisabledState.CustomBorderColor = Color.DarkGray;
+            btn_appointment.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btn_appointment.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btn_appointment.Dock = DockStyle.Top;
+            btn_appointment.FillColor = Color.Transparent;
+            btn_appointment.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_appointment.ForeColor = Color.White;
+            btn_appointment.Image = Properties.Resources.icons8_appointment_100;
+            btn_appointment.ImageAlign = HorizontalAlignment.Left;
+            btn_appointment.ImageOffset = new Point(10, 0);
+            btn_appointment.Location = new Point(0, 567);
+            btn_appointment.Margin = new Padding(10);
+            btn_appointment.Name = "btn_appointment";
+            btn_appointment.Padding = new Padding(10, 0, 0, 0);
+            btn_appointment.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btn_appointment.Size = new Size(250, 56);
+            btn_appointment.TabIndex = 7;
+            btn_appointment.Text = "Lịch hẹn";
+            btn_appointment.TextAlign = HorizontalAlignment.Left;
+            btn_appointment.Click += btn_appointment_Click;
             // 
             // btn_service
             // 
@@ -405,7 +434,6 @@
         private Guna.UI2.WinForms.Guna2Button btn_exit;
         private Guna.UI2.WinForms.Guna2Button btn_patient;
         private PictureBox pictureBox1;
-        private Panel panelMain;
         private Guna.UI2.WinForms.Guna2Button btn_employee;
         private Panel panel_btn_employee;
         private Guna.UI2.WinForms.Guna2Button btn_nurse;
@@ -413,5 +441,7 @@
         private Guna.UI2.WinForms.Guna2Button btn_protector;
         private Guna.UI2.WinForms.Guna2Button btn_service;
         private Guna.UI2.WinForms.Guna2Button btn_medicine;
+        private Guna.UI2.WinForms.Guna2Button btn_appointment;
+        public Panel panelMain;
     }
 }

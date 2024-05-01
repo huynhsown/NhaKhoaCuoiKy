@@ -180,6 +180,44 @@ namespace NhaKhoaCuoiKy.Helpers
             return id;
         }
 
+        public static bool updateService(int service_id, int category_id, string title, int price, int discount, int warranty, int unit, int time, string detail)
+        {
+            Database db = null;
+            bool check = false;
+            try
+            {
+                db = new Database();
+                db.openConnection();
+                using (SqlCommand cmd = new SqlCommand("updateService", db.getConnection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ServiceID", service_id);
+                    cmd.Parameters.AddWithValue("@CategoryID", category_id);
+                    cmd.Parameters.AddWithValue("@Title", title);
+                    cmd.Parameters.AddWithValue("@Price", price);
+                    cmd.Parameters.AddWithValue("@Discount", discount);
+                    cmd.Parameters.AddWithValue("@Warranty", warranty);
+                    cmd.Parameters.AddWithValue("@Unit", unit);
+                    cmd.Parameters.AddWithValue("@Time", time);
+                    cmd.Parameters.AddWithValue("@Detail", detail);
+
+                    // Execute the command
+                    if (cmd.ExecuteNonQuery() > 0) check = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions
+                throw ex;
+            }
+            finally
+            {
+                if (db != null) db.closeConnection();
+            }
+            return check;
+        }
+
+
         public static DataTable getAllService()
         {
             DataTable dt = new DataTable();
@@ -355,11 +393,11 @@ namespace NhaKhoaCuoiKy.Helpers
             try
             {
                 db.openConnection();
-                using (SqlCommand cmd = new SqlCommand("updateCategory", db.getConnection))
+                using (SqlCommand cmd = new SqlCommand("UpdateCategory", db.getConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@MaLoaiDichVu", id);
-                    cmd.Parameters.AddWithValue("@TenLoaiDichVu", title);
+                    cmd.Parameters.AddWithValue("@CategoryID", id);
+                    cmd.Parameters.AddWithValue("@CategoryName", title);
                     if(cmd.ExecuteNonQuery() > 0)
                     {
                         check = true;

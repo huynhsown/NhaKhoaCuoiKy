@@ -103,6 +103,16 @@ namespace NhaKhoaCuoiKy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_appointment_100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-appointment-100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_avatar_female_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8-avatar_female-96", resourceCulture);
@@ -126,6 +136,26 @@ namespace NhaKhoaCuoiKy.Properties {
         internal static System.Drawing.Bitmap icons8_avatar_orther_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8-avatar_orther-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_back_100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-back-100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_back_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-back-96", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

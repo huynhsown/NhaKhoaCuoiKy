@@ -2,6 +2,7 @@
 using NhaKhoaCuoiKy.dbs;
 using NhaKhoaCuoiKy.Views.Employee;
 using NhaKhoaCuoiKy.Views.Employee.Medicines;
+using NhaKhoaCuoiKy.Views.Appointment;
 using NhaKhoaCuoiKy.Views.Service;
 
 namespace NhaKhoaCuoiKy.Views
@@ -22,12 +23,13 @@ namespace NhaKhoaCuoiKy.Views
         private Nurse nurse = new Nurse();
         private Medicine medicine = new Medicine();
         
+        private AppointMent newAppointment;
         private void MainForm_Load(object sender, EventArgs e)
         {
             panel_btn_employee.AutoSize = true;
         }
 
-        private void openChildForm(Form childForm)
+        public void openChildForm(Form childForm)
         {
             if (currentForm != null) currentForm.Close();
             currentForm = childForm;
@@ -39,23 +41,9 @@ namespace NhaKhoaCuoiKy.Views
             childForm.BringToFront();
             childForm.Show();
 
-            if (patient != null)
-            {
-                patient.popupNewPatient += (s, e) =>
-                {
-
-                };
-
-                patient.addNewRecord += (s, e) =>
-                {
-                    newRecord?.Close();
-                    newRecord = new AddNewRecord();
-                    openChildFormHaveData(newRecord);
-                };
-            }
         }
 
-        private void openChildFormHaveData(Form childForm)
+        public void openChildFormHaveData(Form childForm)
         {
             currentForm = childForm;
             childForm.TopLevel = false;
@@ -65,14 +53,6 @@ namespace NhaKhoaCuoiKy.Views
             panelMain.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
-
-            if (newRecord != null)
-            {
-                newRecord.backToPatient += (s, e) =>
-                {
-                    openChildForm(patient);
-                };
-            }
         }
 
         private void btn_home_Click(object sender, EventArgs e)
@@ -213,6 +193,12 @@ namespace NhaKhoaCuoiKy.Views
             medicine?.Close();
             openChildForm(medicine = new Medicine(this));
             
+        }
+        private void btn_appointment_Click(object sender, EventArgs e)
+        {
+            closeAllPanel();
+            newAppointment?.Close();
+            openChildForm(newAppointment = new AppointMent(this));
         }
     }
 }

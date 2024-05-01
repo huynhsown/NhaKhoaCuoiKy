@@ -81,7 +81,7 @@ namespace NhaKhoaCuoiKy.Views.Service
             }
         }
 
-        private void loadAllService()
+        public void loadAllService()
         {
             try
             {
@@ -99,8 +99,8 @@ namespace NhaKhoaCuoiKy.Views.Service
             data_category_items.Rows.Clear();
             foreach (DataRow dr in dt.Rows)
             {
-                int id = Convert.ToInt32(dr[0]);
-                string txt = dr[1].ToString();
+                int id = Convert.ToInt32(dr["MaDichVu"]);
+                string txt = dr["TenDichVu"].ToString();
                 data_category_items.Rows.Add(id, txt);
             }
         }
@@ -123,6 +123,27 @@ namespace NhaKhoaCuoiKy.Views.Service
                     formBackGround.Show();
                     newService.Owner = formBackGround;
                     newService.ShowDialog();
+                    formBackGround.Dispose();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Đã xảy ra lỗi! Vui lòng thử lại.", "Thông báo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        void loadForm(Form form)
+        {
+            FormBackGround formBackGround = new FormBackGround(mainForm);
+            try
+            {
+                using (form)
+                {
+                    formBackGround.Owner = mainForm;
+                    formBackGround.Show();
+                    form.Owner = formBackGround;
+                    form.ShowDialog();
                     formBackGround.Dispose();
                 }
             }
@@ -169,23 +190,7 @@ namespace NhaKhoaCuoiKy.Views.Service
 
                 if (data_loaiDichvu.Columns[e.ColumnIndex].Name == "col_category_Info")
                 {
-                    FormBackGround formBackGround = new FormBackGround(mainForm);
-                    try
-                    {
-                        using (NewCategory newCategory = new NewCategory(this, Convert.ToInt32(data_loaiDichvu.Rows[e.RowIndex].Cells[0].Value), data_loaiDichvu.Rows[e.RowIndex].Cells[1].Value.ToString()))
-                        {
-                            formBackGround.Owner = mainForm;
-                            formBackGround.Show();
-                            newCategory.Owner = formBackGround;
-                            newCategory.ShowDialog();
-                            formBackGround.Dispose();
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Đã xảy ra lỗi! Vui lòng thử lại.", "Thông báo",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    loadForm(new NewCategory(this, Convert.ToInt32(data_loaiDichvu.Rows[e.RowIndex].Cells[0].Value), data_loaiDichvu.Rows[e.RowIndex].Cells[1].Value.ToString()));
                 }
             }
             catch (Exception ex)
@@ -215,6 +220,11 @@ namespace NhaKhoaCuoiKy.Views.Service
                             MessageBox.Show("Xóa thất bại", "Xóa", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
+                }
+                if (data_category_items.Columns[e.ColumnIndex].Name == "col_btn_info")
+                {
+                    int serviceID = Convert.ToInt32(data_category_items.Rows[e.RowIndex].Cells[0].Value);
+                    loadForm(new EditService(this, serviceID));
                 }
             }
             catch (Exception ex)
@@ -253,15 +263,15 @@ namespace NhaKhoaCuoiKy.Views.Service
             int index = cb_category_search.SelectedIndex;
             int id;
             if (index == 0)
-            {                
-                if(!Int32.TryParse(tb_category_search.Text, out id))
+            {
+                if (!Int32.TryParse(tb_category_search.Text, out id))
                 {
                     MessageBox.Show("Vui lòng nhập số", "Tìm kiếm loại dịch vụ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
                 loadCategory(ServiceHelper.getCategoryByID(id));
             }
-            else if(index == 1)
+            else if (index == 1)
             {
                 loadCategory(ServiceHelper.getCategoryByTitle(tb_category_search.Text.Trim()));
             }
