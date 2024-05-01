@@ -1,5 +1,7 @@
 ﻿using Guna.UI2.WinForms;
 using NhaKhoaCuoiKy.dbs;
+using NhaKhoaCuoiKy.Views.Employee;
+using NhaKhoaCuoiKy.Views.Employee.Medicines;
 using NhaKhoaCuoiKy.Views.Service;
 
 namespace NhaKhoaCuoiKy.Views
@@ -15,7 +17,11 @@ namespace NhaKhoaCuoiKy.Views
         private Patient patient = new Patient();
         private Servicee service;
         private AddNewRecord newRecord;
-
+        private Doctor doctor = new Doctor();
+        private Guard guard = new Guard();
+        private Nurse nurse = new Nurse();
+        private Medicine medicine = new Medicine();
+        
         private void MainForm_Load(object sender, EventArgs e)
         {
             panel_btn_employee.AutoSize = true;
@@ -176,6 +182,37 @@ namespace NhaKhoaCuoiKy.Views
             closeAllPanel();
             service?.Close();
             openChildForm(service = new Servicee(this));
+        }
+
+        private void btn_employee_Doctor_Click(object sender, EventArgs e)
+        {
+            closeAllPanel();
+            doctor?.Close();
+            openChildForm(doctor = new Doctor(this));
+
+        }
+
+        private void btn_protector_Click(object sender, EventArgs e)
+        {
+            closeAllPanel();
+            guard?.Close();
+            openChildForm(guard = new Guard(this));
+        }
+
+        private void btn_nurse_Click(object sender, EventArgs e)
+        {
+            closeAllPanel();
+            nurse?.Close();
+            openChildForm(nurse = new Nurse(this));
+
+        }
+
+        private void btn_medicine_Click(object sender, EventArgs e)
+        {
+            closeAllPanel();
+            medicine?.Close();
+            openChildForm(medicine = new Medicine(this));
+            
         }
     }
 }

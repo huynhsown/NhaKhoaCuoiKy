@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="SQL\" />
     <Folder Include="Resource\Image\" />
   </ItemGroup>
 
@@ -24,6 +23,9 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Medicines\Medicine.cs">
+      <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
 
