@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -46,7 +44,9 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panelSideMenu = new Panel();
             btn_appointment = new Guna.UI2.WinForms.Guna2Button();
             btn_service = new Guna.UI2.WinForms.Guna2Button();
@@ -61,6 +61,7 @@
             panelIcon = new Panel();
             pictureBox1 = new PictureBox();
             panelMain = new Panel();
+            btn_medicine = new Guna.UI2.WinForms.Guna2Button();
             panelSideMenu.SuspendLayout();
             panel_btn_employee.SuspendLayout();
             panelIcon.SuspendLayout();
@@ -71,6 +72,7 @@
             // 
             panelSideMenu.AutoScroll = true;
             panelSideMenu.BackColor = Color.FromArgb(17, 34, 71);
+            panelSideMenu.Controls.Add(btn_medicine);
             panelSideMenu.Controls.Add(btn_appointment);
             panelSideMenu.Controls.Add(btn_service);
             panelSideMenu.Controls.Add(panel_btn_employee);
@@ -178,6 +180,7 @@
             btn_protector.TabIndex = 7;
             btn_protector.Text = "Bảo vệ";
             btn_protector.TextAlign = HorizontalAlignment.Left;
+            btn_protector.Click += btn_protector_Click;
             // 
             // btn_nurse
             // 
@@ -204,6 +207,7 @@
             btn_nurse.TabIndex = 6;
             btn_nurse.Text = "Y tá";
             btn_nurse.TextAlign = HorizontalAlignment.Left;
+            btn_nurse.Click += btn_nurse_Click;
             // 
             // btn_employee_Doctor
             // 
@@ -230,6 +234,7 @@
             btn_employee_Doctor.TabIndex = 5;
             btn_employee_Doctor.Text = "Bác sĩ";
             btn_employee_Doctor.TextAlign = HorizontalAlignment.Left;
+            btn_employee_Doctor.Click += btn_employee_Doctor_Click;
             // 
             // btn_employee
             // 
@@ -375,6 +380,33 @@
             panelMain.Size = new Size(1232, 853);
             panelMain.TabIndex = 1;
             // 
+            // btn_medicine
+            // 
+            btn_medicine.BackColor = Color.Transparent;
+            btn_medicine.BorderRadius = 8;
+            btn_medicine.CustomizableEdges = customizableEdges1;
+            btn_medicine.DisabledState.BorderColor = Color.DarkGray;
+            btn_medicine.DisabledState.CustomBorderColor = Color.DarkGray;
+            btn_medicine.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btn_medicine.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btn_medicine.Dock = DockStyle.Top;
+            btn_medicine.FillColor = Color.Transparent;
+            btn_medicine.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_medicine.ForeColor = Color.White;
+            btn_medicine.Image = (Image)resources.GetObject("btn_medicine.Image");
+            btn_medicine.ImageAlign = HorizontalAlignment.Left;
+            btn_medicine.ImageOffset = new Point(10, 0);
+            btn_medicine.Location = new Point(0, 567);
+            btn_medicine.Margin = new Padding(10);
+            btn_medicine.Name = "btn_medicine";
+            btn_medicine.Padding = new Padding(10, 0, 0, 0);
+            btn_medicine.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btn_medicine.Size = new Size(250, 56);
+            btn_medicine.TabIndex = 7;
+            btn_medicine.Text = "Thuốc";
+            btn_medicine.TextAlign = HorizontalAlignment.Left;
+            btn_medicine.Click += btn_medicine_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -408,6 +440,7 @@
         private Guna.UI2.WinForms.Guna2Button btn_employee_Doctor;
         private Guna.UI2.WinForms.Guna2Button btn_protector;
         private Guna.UI2.WinForms.Guna2Button btn_service;
+        private Guna.UI2.WinForms.Guna2Button btn_medicine;
         private Guna.UI2.WinForms.Guna2Button btn_appointment;
         public Panel panelMain;
     }

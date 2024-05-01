@@ -1,6 +1,8 @@
-CREATE PROCEDURE [dbo].[addGuard]
+CREATE PROCEDURE [dbo].[addDoctor]
 	@MaNhanVien INT OUT,
 	@HoVaTen NVARCHAR(255),
+	@HocVi NVARCHAR(255),
+	@ChuyenMon NVARCHAR(255),
 	@GioiTinh NVARCHAR(5),
 	@NgaySinh DATE,
 	@TienLuong INT, 
@@ -28,6 +30,6 @@ BEGIN
 			@Anh,
 			@SoDienThoai);
 	SET @MaNhanVien = SCOPE_IDENTITY();
-	INSERT INTO [dbo].[BAOVE] VALUES (@MaNhanVien);
+	INSERT INTO [dbo].[BACSI] VALUES ( @HocVi, @ChuyenMon, @MaNhanVien);
 	RETURN 1;
 END
